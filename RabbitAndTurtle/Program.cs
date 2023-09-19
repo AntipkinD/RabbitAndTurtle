@@ -1,14 +1,20 @@
-﻿using RabbitandTurtle;
-
-internal class Program
+﻿internal class Program
 {
+    static void MyThreadTurtle()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            Console.WriteLine("Черепаха прошла: " + i);
+        }
+    }
     private static void Main(string[] args)
     {
-        AnimalThread Trtl = new AnimalThread("черепаха", ThreadPriority.Normal);
-        AnimalThread Rbbt = new AnimalThread("кролик", ThreadPriority.Lowest);
-        
-        RabbitAndTurtle turt = new RabbitAndTurtle(Trtl.name, Rbbt.name, Trtl.priority, Rbbt.priority);
-        /*RabbitAdTurtle tut = new RabbitAdTurtle(Trtl.name, Trtl.priority);
-        RabbitndTurtle tt = new RabbitndTurtle(Rbbt.name, Rbbt.priority);*/
+        Thread turtle = new(MyThreadTurtle);
+        turtle.Start();
+
+        for (int i = 0; i < 100; i++)
+        {
+            Console.WriteLine("Кролик прошел: " + i);
+        }
     }
 }
